@@ -2,7 +2,7 @@ package main
 
 import (
 	"testing"
-
+    "strings"
 	"github.com/stretchr/testify/require"
 )
 
@@ -20,8 +20,16 @@ func MaskPasswordBad(password string) string {
 }
 
 func MaskPasswordGood(password string) string {
-	return ""
-}
+    var builder strings.Builder
+    for idx, val := range password{
+        if idx % 3 == 0{
+            builder.WriteByte('_')
+        }else{
+            builder.WriteRune(val)
+        }
+    }
+    return builder.String()
+ }
 
 func BenchmarkMaskPassword(b *testing.B) {
 	b.Run("bad", func(b *testing.B) {
