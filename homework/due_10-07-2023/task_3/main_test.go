@@ -13,18 +13,15 @@ func AddOrRemove(aPtr *[]int, elem int) {
 			count += 1
 		}
 	}
-	switch count {
-	case 0:
+
+	if count == 0 {
 		*aPtr = append(*aPtr, elem)
-	case 1:
-		index := 0
+	} else {
 		for idx, val := range *aPtr {
 			if val == elem {
-				index = idx
+				*aPtr = append((*aPtr)[:idx], (*aPtr)[idx+1:]...)
 			}
 		}
-		*aPtr = append((*aPtr)[:index], (*aPtr)[index+1:]...)
-
 	}
 }
 
