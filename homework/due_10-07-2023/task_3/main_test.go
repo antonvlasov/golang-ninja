@@ -7,6 +7,25 @@ import (
 )
 
 func AddOrRemove(aPtr *[]int, elem int) {
+	count := 0
+	for _, val := range *aPtr {
+		if val == elem {
+			count += 1
+		}
+	}
+	switch count {
+	case 0:
+		*aPtr = append(*aPtr, elem)
+	case 1:
+		index := 0
+		for idx, val := range *aPtr {
+			if val == elem {
+				index = idx
+			}
+		}
+		*aPtr = append((*aPtr)[:index], (*aPtr)[index+1:]...)
+
+	}
 }
 
 func TestAddOrRemove(t *testing.T) {
