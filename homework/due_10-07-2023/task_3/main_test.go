@@ -11,7 +11,8 @@ func AddOrRemove(aPtr *[]int, elem int) {
 	flag := false
 	for _, v := range *aPtr {
 		if v == elem {
-			//	fmt.Println(aPtr[index], index, v, elem) объясните пожалуйста почему в го нельзя обращаться к указателю по индексу я пробовал и так aPtr[index] и так *aPtr[index] 
+			//	fmt.Println(aPtr[index], index, v, elem) объясните пожалуйста почему в го нельзя обращаться к указателю по индексу я пробовал и так aPtr[index] и так *aPtr[index]
+			// upd понял ошибку, оказывается надо было к указателю по индексу обращаться (*aPtr)[index], а я не брал в скобки
 			flag = true
 			//*aPtr = append(*aPtr[:index], *aPtr[index+1:]...) так тоже не получилось из-за обращения по индексу
 		} else {
