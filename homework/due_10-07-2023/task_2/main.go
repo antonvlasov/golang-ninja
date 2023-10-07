@@ -17,7 +17,11 @@ type AutomobileSpecification struct {
 	NSportFeatures     int
 }
 
-func isSportCar(spec AutomobileSpecification) bool {
+// 1) receive by reference
+func isSportCar(spec *AutomobileSpecification) bool {
+	// 2) init NSportFeatures field
+	spec.NSportFeatures = 0
+
 	if spec.NDoors < 4 {
 		spec.NSportFeatures += 1
 	}
@@ -48,9 +52,8 @@ func main() {
 		HasRoof:            true,
 	}
 
-	fmt.Printf("is %s a sport cat? %v\n", car1.Name, isSportCar(car1))
-	// did something change?
-	fmt.Printf("is %s a sport cat? %v\n", car1.Name, isSportCar(car1))
-	// did something change?
-	fmt.Printf("is %s a sport cat? %v\n", car1.Name, isSportCar(car1))
+	// 3) pass by reference
+	fmt.Printf("is %s a sport cat? %v\n", car1.Name, isSportCar(&car1))
+	fmt.Printf("is %s a sport cat? %v\n", car1.Name, isSportCar(&car1))
+	fmt.Printf("is %s a sport cat? %v\n", car1.Name, isSportCar(&car1))
 }
