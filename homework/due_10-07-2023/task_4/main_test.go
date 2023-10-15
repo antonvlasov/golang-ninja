@@ -19,8 +19,13 @@ func MaskPasswordBad(password string) string {
 	return password
 }
 
+
 func MaskPasswordGood(password string) string {
-	return ""
+	var ans string = ""
+	for i := 3; i < len(password); i += 3 {
+		ans += "_" + password[i-2:i]
+	}
+	return ans + "_"
 }
 
 func BenchmarkMaskPassword(b *testing.B) {
