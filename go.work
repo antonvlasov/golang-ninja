@@ -1,8 +1,9 @@
-go 1.20
+go 1.21.3
 
 use (
 	./homework/due_10-07-2023/task_1
 	./homework/due_10-07-2023/task_2
 	./homework/due_10-07-2023/task_3
 	./homework/due_10-07-2023/task_4
+	./homework/due_11-06-2023
 )
