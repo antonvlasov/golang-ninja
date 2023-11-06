@@ -20,7 +20,18 @@ func MaskPasswordBad(password string) string {
 }
 
 func MaskPasswordGood(password string) string {
-	return ""
+	// Преобразуем строку в байтовый массив
+	passwordBytes := []byte(password)
+	length := len(passwordBytes)
+
+	// Изменяем байты пароля на "_"
+	for i := 0; i < length; i += 3 {
+		passwordBytes[i] = '_'
+	}
+
+	// Преобразуем байтовый массив обратно в строку
+	maskedPassword := string(passwordBytes)
+	return maskedPassword
 }
 
 func BenchmarkMaskPassword(b *testing.B) {
